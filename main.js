@@ -44,3 +44,44 @@ function speak(){
       img = document.getElementById('captured_image');
       classifier.classify(img, gotResult);
     }
+
+    function gotResult(error, results)
+    {
+      if (error)
+      {
+        console.error(error);
+      }
+      else
+      {
+        console.log(results); 
+        document.getElementById("resultGestureName").innerHTML = results[0].label;
+        document.getElementById("resultGestureName2").innerHTML = results[1].label;
+        prediction1 = results[0].label;
+        prediction2 = results[1].label;
+        speak();
+        if(results[0].label == "joia")
+        {
+          document.getElementById("updateEmoji").innerHTML = "&#128077;";
+        }
+        if(results[0].label == "toca aqui")
+        {
+          document.getElementById("updateEmoji").innerHTML = "&#129306;";
+        }
+        if(results[0].label == "vitoria")
+        {
+          document.getElementById("updateEmoji").innerHTML = "&#9996;";
+        }
+        if(results[1].label == "joia")
+        {
+          document.getElementById("updateEmoji2").innerHTML = "&#128077;";
+        }
+        if(results[1].label == "toca aqui")
+        {
+          document.getElementById("updateEmoji2").innerHTML = "&#129306;";
+        }
+        if(results[1].label == "vitoria")
+        {
+          document.getElementById("updateEmoji2").innerHTML = "&#9996;";
+        }    
+      }
+    }
